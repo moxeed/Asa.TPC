@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asa.TPC.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210814064926_init")]
-    partial class init
+    [Migration("20210815102454_DescisionTotalMoneny")]
+    partial class DescisionTotalMoneny
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,9 +20,24 @@ namespace Asa.TPC.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Asa.TPC.Domain.Order", b =>
+            modelBuilder.Entity("Asa.TPC.Domain.Block", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("BlockId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlockId");
+
+                    b.ToTable("Blocks");
+                });
+
+            modelBuilder.Entity("Asa.TPC.Domain.Decision", b =>
+                {
+                    b.Property<int>("DecisionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -30,7 +45,10 @@ namespace Asa.TPC.Migrations
                     b.Property<int>("BlockId")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderId");
+                    b.Property<int>("TotalAmount")
+                        .HasColumnType("int");
+
+                    b.HasKey("DecisionId");
 
                     b.ToTable("Orders");
                 });

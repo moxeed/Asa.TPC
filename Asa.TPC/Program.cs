@@ -8,7 +8,8 @@ namespace Asa.TPC
         static async Task Main()
         {
             var facade = new Facade();
-            await facade.Complete();
+            //await facade.CompleteAsync();
+            facade.CompleteAsResourceAndUnitOfWork();
 
             Console.Read();
         }
