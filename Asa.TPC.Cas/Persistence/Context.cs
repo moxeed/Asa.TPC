@@ -8,7 +8,6 @@ namespace Asa.TPC.Persistence
 {
     class Context : DbContext, IPromotableSinglePhaseNotification, IUnitOfWork
     {
-        public DbSet<Decision> Orders { get; private set; }
         public DbSet<Domain.Block> Blocks { get; private set; }
 
         public void Initialize()
@@ -31,7 +30,7 @@ namespace Asa.TPC.Persistence
                 SaveChanges();
                 singlePhaseEnlistment.Done();
             }
-            catch(Exception e)
+            catch
             {
                 singlePhaseEnlistment.Aborted();
             }
@@ -39,7 +38,7 @@ namespace Asa.TPC.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Initial Catalog=TPC;Trusted_connection=true");
+            optionsBuilder.UseSqlServer("Server=.;Initial Catalog=TPC;Trusted_connection=true");
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -48,16 +47,9 @@ namespace Asa.TPC.Persistence
             if (Transaction.Current is not null)
                 Transaction.Current.EnlistPromotableSinglePhase(this);
             else
-                try
-                {
-                    SaveChanges();
-                }
-                catch (Exception e) 
-                {
-                }
+                SaveChanges();
         }
 
-        public DecisionRepository OrderRepository => new DecisionRepository(this);
         public BlockRepository BlockRepository => new BlockRepository(this);
     }
 }
