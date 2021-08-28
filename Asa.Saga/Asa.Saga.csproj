@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Chronicle_" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asa.Core\Asa.Core.csproj" />
+    <ProjectReference Include="..\Asa.External\Asa.External.csproj" />
+    <ProjectReference Include="..\Asa.Persistence\Asa.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

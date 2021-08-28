@@ -1,6 +1,6 @@
-﻿namespace Asa.TPC.Domain
+﻿namespace Asa.Core.Domain
 {
-    class Block
+    public class Block
     {
         public int BlockId { get; private set; }
         public int Amount { get; private set; }
@@ -10,7 +10,7 @@
             Amount = amount;
         }
 
-        public void Release() 
+        public void Release()
         {
             Amount = 0;
         }

@@ -15,4 +15,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Asa.Core\Asa.Core.csproj" />
+    <ProjectReference Include="..\Asa.External\Asa.External.csproj" />
+    <ProjectReference Include="..\Asa.Persistence\Asa.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ExternalService\" />
+  </ItemGroup>
+
 </Project>

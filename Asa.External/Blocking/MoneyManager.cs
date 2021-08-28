@@ -1,4 +1,4 @@
-﻿using Asa.TPC.Domain;
+﻿using Asa.Core.Domain;
 using System.Transactions;
 
 namespace Asa.TPC.ExternalService.Block

@@ -1,9 +1,9 @@
-﻿using Asa.TPC.Domain;
+﻿using Asa.Core.Domain;
 using System.Threading.Tasks;
 
 namespace Asa.TPC.Persistence
 {
-    class DecisionRepository
+    class DecisionRepository : IDecisionRepository
     {
         private readonly Context _context;
 

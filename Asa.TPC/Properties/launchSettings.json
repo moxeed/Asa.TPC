@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Asa.TPC": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

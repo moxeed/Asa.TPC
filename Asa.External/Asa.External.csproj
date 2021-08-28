@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asa.Core\Asa.Core.csproj" />
+    <ProjectReference Include="..\Asa.Persistence\Asa.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

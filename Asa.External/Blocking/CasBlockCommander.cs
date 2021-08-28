@@ -1,11 +1,11 @@
-﻿using Asa.TPC.Domain;
+﻿using Asa.Core.Domain;
 using Asa.TPC.ExternalService.Block;
 using System;
 using System.Transactions;
 
 namespace Asa.TPC.ExternalService
 {
-    class CasBlockCommander : IEnlistmentNotification
+    public class CasBlockCommander : IEnlistmentNotification
     {
         private readonly Decision _decision;
         private readonly CasService _casService;

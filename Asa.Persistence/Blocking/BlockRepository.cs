@@ -1,9 +1,10 @@
-﻿using Asa.TPC.Domain;
+﻿using Asa.Core.Domain;
+using Asa.TPC.Persistence;
 using System.Threading.Tasks;
 
-namespace Asa.TPC.Persistence.Block
+namespace Asa.Persistence.Blocking
 {
-    class BlockRepository
+    class BlockRepository : IBlockRepository
     {
         private readonly Context _context;
 
@@ -12,13 +13,13 @@ namespace Asa.TPC.Persistence.Block
             _context = context;
         }
 
-        public async Task<Domain.Block> GetBlock(int orderId)
+        public async Task<Block> GetBlock(int orderId)
         {
             var block = _context.Blocks.FindAsync(orderId);
             return await block;
         }
 
-        public void Save(Domain.Block block)
+        public void Save(Block block)
         {
             _context.Attach(block);
         }

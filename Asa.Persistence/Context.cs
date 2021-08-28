@@ -1,5 +1,5 @@
-﻿using Asa.TPC.Domain;
-using Asa.TPC.Persistence.Block;
+﻿using Asa.Core.Domain;
+using Asa.Persistence.Blocking;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Transactions;
@@ -9,7 +9,7 @@ namespace Asa.TPC.Persistence
     class Context : DbContext, IPromotableSinglePhaseNotification, IUnitOfWork
     {
         public DbSet<Decision> Orders { get; private set; }
-        public DbSet<Domain.Block> Blocks { get; private set; }
+        public DbSet<Block> Blocks { get; private set; }
 
         public void Initialize()
         { }
@@ -51,7 +51,7 @@ namespace Asa.TPC.Persistence
                 SaveChanges();
         }
 
-        public DecisionRepository OrderRepository => new DecisionRepository(this);
-        public BlockRepository BlockRepository => new BlockRepository(this);
+        public IDecisionRepository OrderRepository => new DecisionRepository(this);
+        public IBlockRepository BlockRepository => new BlockRepository(this);
     }
 }

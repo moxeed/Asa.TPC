@@ -1,9 +1,9 @@
-﻿using Asa.TPC.Domain;
+﻿using Asa.Core.Domain;
 using Asa.TPC.ExternalService.Common;
 
 namespace Asa.TPC.ExternalService.Block
 {
-    class CasBlockResource : TransactionalResource
+    public class CasBlockResource : TransactionalResource
     {
         private readonly Decision _decision;
         private readonly CasService _casService;

@@ -2,7 +2,7 @@
 
 namespace Asa.TPC.ExternalService.Common
 {
-    abstract class TransactionalResource : IEnlistmentNotification
+    public abstract class TransactionalResource : IEnlistmentNotification
     {
         public void Execute()
         {

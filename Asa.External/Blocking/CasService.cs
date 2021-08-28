@@ -1,15 +1,15 @@
-﻿using Asa.TPC.Persistence;
+﻿using Asa.Persistence;
 using System;
 using System.Threading.Tasks;
 
 namespace Asa.TPC.ExternalService.Block
 {
-    class CasService
+    public class CasService
     {
         private readonly IUnitOfWork _unitOfWork;
         public CasService()
         {
-            _unitOfWork = new Context();
+            _unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
         }
 
         public async Task<int> Block(int amount)
@@ -17,7 +17,7 @@ namespace Asa.TPC.ExternalService.Block
             if (amount < 10)
                 throw new InvalidOperationException();
 
-            var block = new Domain.Block(amount);
+            var block = new Core.Domain.Block(amount);
             _unitOfWork.BlockRepository.Save(block);
             _unitOfWork.Commit();
 
